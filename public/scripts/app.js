@@ -5,27 +5,49 @@ console.log("It's all good in tha hood...");
 angular.module('tunely', [])
 .controller('AlbumsIndexController', AlbumsIndexController);
 
-function AlbumsIndexController() {
-	var vm = this;
-	vm.newAlbum = {};
 
-	vm.newAlbum = {
-		name: "License to Ill",
-		artistName: "Beastie Boys"
+// Albums Controller
+AlbumsIndexController.$inject = ['$http'];
+	function AlbumsIndexController( $http ) {
+
+	var vm = this;
+	vm.newAlbum = {name: "", artistName: ""};
+	vm.allAlbums = [];
+
+	// vm.newAlbum = {
+	// 	name: "License to Ill",
+	// 	artistName: "Beastie Boys"
+	// };
+
+	// Render all albums to view call
+	loadAllAlbums();
+
+	// Render all albums to view function
+	function loadAllAlbums() {
+		$http ({
+			method: "GET",
+			url: "/api/albums"
+		}).then(function loadAllAlbumsSuccess(response) {
+			vm.allAlbums = response.data;
+		}, function loadAllAlbumsError(response) {
+			console.log("Looks like we have a problem... " + response )
+		})
 	};
-	
-	vm.albums = [
-	  {
-	    name: 'Coming Home',
-	    artistName: 'Leon Bridges'
-	  },
-	  {
-	    name: 'Are We There',
-	    artistName: 'Sharon Van Etten'
-	  },
-	  {
-	    name: 'The Queen is Dead',
-	    artistName: 'The Smiths'
-	  }
-	];
-}
+
+	// Create a new album from view form
+	vm.createAlbum = function () {
+	  $http({
+	    method: 'POST',
+	    url: '/api/albums',
+	    data: vm.newAlbum
+	  }).then(function successCallback(response) {
+	  	vm.allAlbums.push(response.data);
+	  	vm.newAlbum = {};
+	  	console.log(response.data);
+	  }, function errorCallback(response) {
+	    console.log('There was an error posting the data', response);
+	  });
+	}
+
+
+}; // End AlbumsIndexController

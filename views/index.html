@@ -35,19 +35,35 @@
       </div>
     </div>
 
+  <!-- Start Container -->
   <div class="container" ng-controller="AlbumsIndexController as albumsIndexCtrl">
-    <p><b>{{albumsIndexCtrl.newAlbum.name}}:</b> {{albumsIndexCtrl.newAlbum.artistName}}</p>
+   <!--  <p><span class="album-name">{{ albumsIndexCtrl.newAlbum.name }}</span>: <span class="artist-name">{{ albumsIndexCtrl.newAlbum.artistName }} </span></p>
 
-    <input type="text" class="form-control" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
-    <input type="text" class="form-control" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName">
+    <input type="text" class="form-control my-form" placeholder="New album name" ng-model="albumsIndexCtrl.newAlbum.name">
+    <input type="text" class="form-control my-form" placeholder="New album artist" ng-model="albumsIndexCtrl.newAlbum.artistName"> -->
 
-  <div ng-repeat="album in albumsIndexCtrl.albums">
-    {{album}}
+      <h3>Add New Album</h3>
+      <form ng-submit="albumsIndexCtrl.createAlbum()">
+        <div class="float-fix">
+          <input type="text" ng-model="albumsIndexCtrl.newAlbum.name" class="my-form-field left-field" placeholder="Album Name" required>
+          <input type="text" ng-model="albumsIndexCtrl.newAlbum.artistName" class="my-form-field right-field" placeholder="Artist Name" required>
+        </div>
+        <div class="float-fix">
+          <input type="text" ng-model="albumsIndexCtrl.newAlbum.releaseDate" class="my-form-field left-field" placeholder="Year, Month Day">
+          <input type="text" ng-model="albumsIndexCtrl.newAlbum.genres" class="my-form-field right-field" placeholder="Genres">
+        </div>
+        <div class="float-fix">
+          <input class="new-album-submit" type="submit" name="new-album-submit">
+        </div>
+      </form>
+
+  <div ng-repeat="album in albumsIndexCtrl.allAlbums">
+    <p><span class="album-name">{{ album.name }}</span> : <span class="artist-name">{{ album.artistName }}</span><br />
+    <span class="release-date">released {{ album.releaseDate }}</span></p>
   </div>
 
   </div>
-
- 
+ <!-- End Container -->
 
   </body>
   <!-- End Body -->

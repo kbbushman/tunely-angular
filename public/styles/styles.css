@@ -1,3 +1,71 @@
+p {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: normal;
+  padding: 0;
+  margin: 0 0 15px;
+}
+
+::-webkit-input-placeholder {
+   color: #777;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #777;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #777;  
+}
+
+:-ms-input-placeholder {  
+   color: #777;  
+}
+
+input[type="submit"] {
+  display: block;
+  color: #464545;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 10px 20px;
+  margin: 0 0 30px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 3px;
+}
+
+.new-album-submit {
+  margin-right: 10px !important;
+  float: right;
+}
+
+.my-form-field {
+  display: block;
+  width: 40%;
+  height: 40px;
+  padding: 10px;
+  margin: 0 0 20px;
+  border-radius: 3px;
+}
+
+.float-fix {
+  width: 100%;
+  overflow: hidden;
+}
+
+.left-field {
+  width: 48%;
+  margin-right: 20px;
+  float:left;
+}
+
+.right-field {
+  width: 48%;
+  float:left;
+}
+
 .jumbotron {
   background-image: url(/images/background1.jpg);
   background-size: cover;
@@ -16,4 +84,30 @@
 
 .hidden {
   display: none;
+}
+
+.album-name {
+  font-size: 16px;
+  line-height: 1.2;
+  font-weight: bold;
+  color: red;
+  padding: 0;
+  margin: 0;
+}
+
+.artist-name {
+  color: #777;
+  font-size: 15px;
+  line-height: 1.2;
+  font-weight: normal !important;
+  padding: 0;
+  margin: 0;
+}
+
+.release-date {
+  color: #777;
+  font-size: 15px;
+  font-weight: normal !important;
+  padding: 0;
+  margin: 0 0 15px;
 }
